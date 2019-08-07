@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <title th:text="${title}">default title</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<nav th:fragment="navigation">
+    <a href="/tft">Home</a> |
+    <a href="/tft/champions">Champions</a> |
+    <a href="/tft/items">Items</a> |
+    <a href="/tft/stats">User Stats</a>
+</nav>
+
+</body>
+</html>
