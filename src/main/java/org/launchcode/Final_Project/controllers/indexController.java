@@ -1,12 +1,14 @@
 package org.launchcode.Final_Project.controllers;
 
+import org.launchcode.Final_Project.models.user;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
-
+import javax.validation.Valid;
 
 
 @Controller
@@ -39,6 +41,28 @@ public class indexController {
         model.addAttribute("title", "User Stats");
 
         return "stats";
+    }
+
+    @RequestMapping(value = "register", method = RequestMethod.GET)
+    public String register(Model model){
+        model.addAttribute("title", "User Register");
+
+        return "register";
 
     }
+
+    @RequestMapping(value = "stats", method = RequestMethod.POST)
+    public String processRegister(@ModelAttribute @Valid user newUser,
+                                  Errors errors, Model model){
+
+        model.addAttribute("title", "User Page");
+
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "User Register");
+            return "register";
+        }
+
+        return "stats";
+    }
+
 }
