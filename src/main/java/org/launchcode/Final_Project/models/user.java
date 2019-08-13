@@ -1,10 +1,8 @@
 package org.launchcode.Final_Project.models;
 
-
-import com.sun.istack.internal.NotNull;
 import org.hibernate.validator.constraints.Email;
 
-import javax.validation.constraints.Pattern;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,15 +10,15 @@ import java.util.List;
 @Entity
 public class user {
 
-    @NotNull
+
     @Size(min=3,max=15)
     private String username;
 
-    @NotNull
+
     @Size(min=8,max=100)
     private String password;
 
-    @NotNull
+
     @Email(message="Please provide a valid email address")
     private String email;
 
