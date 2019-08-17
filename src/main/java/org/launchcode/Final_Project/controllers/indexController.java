@@ -67,6 +67,18 @@ public class indexController {
             return "register";
         }
 
+        String username = newUser.getUsername();
+
+        for (user users: userDao.findAll()){
+            if(users.getUsername().equals(username)){
+                model.addAttribute("title", "User Register");
+                model.addAttribute(newUser);
+                model.addAttribute("verifyError", "Username taken, please pick another");
+                return "register";
+
+            }
+        }
+
         userDao.save(newUser);
 
         return "stats";

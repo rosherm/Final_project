@@ -15,19 +15,17 @@ import java.util.List;
 public class user {
 
 
-    @NotBlank
+
     @NotEmpty
-    @Size(min=8,max=30)
-    @Pattern(regexp = "^A-Za-z0-9]$", message = "Username must only use letters and be between 8-30 characters long")
+    @Pattern(regexp = "^[A-Za-z0-9]{8,30}$", message = "Username must only use letters, numbers, and be between 8-30 characters long")
     private String username;
 
-    @NotBlank
+
     @NotEmpty
-    @Size(min=8,max=100)
-    
+    @Pattern(regexp = "^[\\S]{8,100}$", message = "No spaces allowed in password and be between 8-30 characters long")
     private String password;
 
-    @NotBlank
+
     @NotEmpty
     @Email(message="Please provide a valid email address")
     private String email;
