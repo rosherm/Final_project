@@ -1,8 +1,12 @@
 package org.launchcode.Final_Project.models;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,14 +15,20 @@ import java.util.List;
 public class user {
 
 
-    @Size(min=3,max=15)
+    @NotBlank
+    @NotEmpty
+    @Size(min=8,max=30)
+    @Pattern(regexp = "^A-Za-z0-9]$", message = "Username must only use letters and be between 8-30 characters long")
     private String username;
 
-
+    @NotBlank
+    @NotEmpty
     @Size(min=8,max=100)
+    
     private String password;
 
-
+    @NotBlank
+    @NotEmpty
     @Email(message="Please provide a valid email address")
     private String email;
 
@@ -30,7 +40,8 @@ public class user {
     @JoinColumn(name = "user_id")
     private List<Game> Games = new ArrayList<>();
 
-
+    public user() {
+    }
 
     public user(String username, String password, String email) {
         this.username = username;

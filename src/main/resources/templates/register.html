@@ -10,24 +10,29 @@
 
 
 <h2>Register</h2>
-<form method="post" style="max-width:600px;" >
+<form method="post" th:object="${user}" style="max-width:600px;" >
     <div class="form-group">
-        <label >Username</label>
-        <input class="form-control"  />
+        <label th:for="username">Username</label>
+        <input class="form-control"  th:field="*{username}" />
+        <span th:errors="*{username}" class="error"></span>
 
     </div>
     <div class="form-group">
-        <label >Email</label>
-        <input class="form-control"  />
+        <label th:for="email">Email</label>
+        <input class="form-control"  th:field="*{email}" />
+        <span th:errors="*{email}" class="error"></span>
+
 
     </div>
 
     <div class="form-group">
-        <label >Password</label>
-        <input class="form-control"  />
+    <label th:for="password">Password</label>
+    <input type="password" class="form-control"  th:field="*{password}" />
+    <span th:errors="*{password}" class="error"></span>
 
 
-    </div>
+
+</div>
 
     <input type="submit" value="Register" />
 </form>
