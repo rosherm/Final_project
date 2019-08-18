@@ -26,7 +26,7 @@ public class user {
     private String password;
 
 
-    @NotEmpty
+
     @Email(message="Please provide a valid email address")
     private String email;
 

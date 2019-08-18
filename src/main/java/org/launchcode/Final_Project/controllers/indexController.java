@@ -1,5 +1,6 @@
 package org.launchcode.Final_Project.controllers;
 
+import org.apache.catalina.User;
 import org.launchcode.Final_Project.models.data.userDao;
 import org.launchcode.Final_Project.models.user;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,39 @@ public class indexController {
     public String index(Model model){
 
         model.addAttribute("title", "TFT");
+        model.addAttribute(new user());
         return "index";
     }
+
+    @RequestMapping(value = "", method = RequestMethod.POST)
+    public String processLogin(@ModelAttribute  @Valid user userCurrent,
+                                  Errors errors, Model model) {
+
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "TFT");
+            model.addAttribute(userCurrent);
+            return "index";
+        }
+        
+        String username = userCurrent.getUsername();
+        String password = userCurrent.getPassword();
+
+
+        if (userDao.findByUsername(username) !=null){
+             user userInDb = userDao.findByUsername(username);
+             if (userInDb.getPassword().equals(password)){
+
+                 return "stats";
+
+             }
+
+        }
+        model.addAttribute("title", "TFT");
+        model.addAttribute(userCurrent);
+
+        return "index";
+    }
+
 
     @RequestMapping(value = "champions", method = RequestMethod.GET)
     public String champions(Model model){

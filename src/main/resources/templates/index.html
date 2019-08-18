@@ -10,22 +10,26 @@
 
 
 <h2>Sign in</h2>
-<form method="post" style="max-width:600px;" >
+<form method="post" th:object="${user}" style="max-width:600px;" >
     <div class="form-group">
-        <label >Username</label>
-        <input class="form-control"  />
+        <label th:for="username">Username</label>
+        <input class="form-control"  th:field="*{username}" />
+        <span th:errors="*{username}" class="error"></span>
+        <span th:text="${verifyError}"></span>
 
     </div>
 
     <div class="form-group">
-        <label >Password</label>
-        <input type = "password" class="form-control"  />
-
+        <label th:for="password">Password</label>
+        <input type="password" class="form-control"  th:field="*{password}" />
+        <span th:errors="*{password}" class="error"></span>
 
     </div>
 
-    <input type="submit" value="Submit" />
+
+        <input type="submit" value="Submit" />
 </form>
+
 <a href="/tft/register">Register</a>
 
 </body>
