@@ -1,40 +1,53 @@
 package org.launchcode.Final_Project.models;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Game {
 
-    private Boolean win;
+    @OneToMany
+    @JoinColumn(name = "game_id")
+    private List<GameChampion> GameChampion = new ArrayList<>();
+
+    @OneToMany
+    @JoinColumn(name = "game_id")
+    private List<GameItem> GameItem = new ArrayList<>();
+
+    private int placement;
+
+    private int LP;
 
     @Id
     private int id;
 
-    @ManyToOne
-    private user user;
+    public Game(int placement, int LP) {
+        this.placement = placement;
+        this.LP = LP;
 
-    public Game(Boolean win) {
-        this.win = win;
     }
 
-    public org.launchcode.Final_Project.models.user getUser() {
-        return user;
+    public Game() {
     }
 
-    public void setUser(org.launchcode.Final_Project.models.user user) {
-        this.user = user;
+    public int getPlacement() {
+        return placement;
     }
 
-    public Boolean getWin() {
-        return win;
+    public void setPlacement(int placement) {
+        this.placement = placement;
     }
 
-    public void setWin(Boolean win) {
-        this.win = win;
+    public int getLP() {
+        return LP;
     }
+
+    public void setLP(int LP) {
+        this.LP = LP;
+    }
+
 
     public int getId() {
         return id;

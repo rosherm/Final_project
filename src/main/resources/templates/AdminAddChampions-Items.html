@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+
+<h2>Add Champion</h2>
+<form method="post" th:object="${Champions}" style="max-width:600px;" >
+    <div class="form-group">
+        <label th:for="championName">Champion Name</label>
+        <input class="form-control"  th:field="*{championName}" />
+        <span th:errors="*{championName}" class="error"></span>
+
+    </div>
+
+    <div class="form-group">
+        <label th:for="championPicUrl">Picture</label>
+        <input class="form-control"  th:field="*{championPicUrl}"/>
+        <span th:errors="*{championPicUrl}" class="error"></span>
+
+
+    </div>
+
+    <input type="submit" value="Add Champion" />
+
+</form>
+
+<h2>Add Item</h2>
+<form method="post" th:object="${Items}" style="max-width:600px;" >
+    <div class="form-group">
+        <label th:for="itemName">Item Name</label>
+        <input class="form-control"  th:field="*{itemName}" />
+        <span th:errors="*{itemName}" class="error"></span>
+
+    </div>
+
+    <div class="form-group">
+        <label th:for="itemPic">Picture</label>
+        <input type = "file" class="form-control"  th:field="*{itemPic}" accept="img/png, image/jpeg"/>
+        <span th:errors="*{itemPic}" class="error"></span>
+
+
+    </div>
+
+
+    <input type="submit" value="Add Item" />
+</form>
+
+
+</body>
+</html>

@@ -12,10 +12,14 @@
 
     <tr>
         <th>Name</th>
-        <th>Description</th>
+        <th>Picture</th>
         <th></th>
     </tr>
 
+    <tr th:each="champion : ${Champions}">
+        <td th:text="${champion.championName}"></td>
+        <td ><img src="../images/testimage.jpg" /></td>
+    </tr>
 
 
 </table>
