@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import java.sql.Blob;
 
 @Entity
@@ -18,6 +19,9 @@ public class Champions {
 
     @NotEmpty
     private String championPicUrl;
+
+    @OneToOne(mappedBy = "champions")
+    private GameChampion Gamechampion;
 
     public Champions(String championName, String championPicUrl) {
         this.championName = championName;

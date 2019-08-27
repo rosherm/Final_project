@@ -1,9 +1,6 @@
 package org.launchcode.Final_Project.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class GameItem {
@@ -14,6 +11,9 @@ public class GameItem {
     @OneToOne
     @JoinColumn(name = "item_id")
     private Item Item = new Item();
+
+    @ManyToOne
+    private Game game;
 
     public GameItem(org.launchcode.Final_Project.models.Item item) {
         Item = item;
@@ -32,5 +32,13 @@ public class GameItem {
 
     public int getId() {
         return id;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
     }
 }

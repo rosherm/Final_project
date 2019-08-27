@@ -10,11 +10,11 @@ public class Game {
 
     @OneToMany
     @JoinColumn(name = "game_id")
-    private List<GameChampion> GameChampion = new ArrayList<>();
+    private List<GameChampion> gameChampion = new ArrayList<>();
 
     @OneToMany
     @JoinColumn(name = "game_id")
-    private List<GameItem> GameItem = new ArrayList<>();
+    private List<GameItem> gameItem = new ArrayList<>();
 
     private int placement;
 
@@ -53,5 +53,11 @@ public class Game {
         return id;
     }
 
+    public List<GameChampion> getGameChampion() {
+        return gameChampion;
+    }
 
+    public List<GameItem> getGameItem() {
+        return gameItem;
+    }
 }

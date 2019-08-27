@@ -1,8 +1,10 @@
 package org.launchcode.Final_Project.models;
 
 import javax.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Entity
 public class GameChampion {
@@ -11,12 +13,15 @@ public class GameChampion {
     private int id;
 
     @OneToOne
-    @JoinColumn(name = "champion_id")
+    @JoinColumn(name = "champions_id")
     private Champions Champion = new Champions();
 
     @OneToMany
     @JoinColumn(name = "game_champion_id")
     private List<GameChampionItem> GameChampionItem = new ArrayList<>();
+
+    @ManyToOne
+    private Game game;
 
     public GameChampion(Champions champion) {
         Champion = champion;
@@ -35,5 +40,17 @@ public class GameChampion {
 
     public int getId() {
         return id;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public List<org.launchcode.Final_Project.models.GameChampionItem> getGameChampionItem() {
+        return GameChampionItem;
     }
 }

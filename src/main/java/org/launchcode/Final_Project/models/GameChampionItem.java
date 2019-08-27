@@ -1,10 +1,7 @@
 package org.launchcode.Final_Project.models;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class GameChampionItem {
@@ -15,6 +12,9 @@ public class GameChampionItem {
     @OneToOne
     @JoinColumn(name = "item_id")
     private Item Item = new Item();
+
+    @ManyToOne
+    private GameChampion gameChampion;
 
     public GameChampionItem(org.launchcode.Final_Project.models.Item item) {
         Item = item;
@@ -33,5 +33,13 @@ public class GameChampionItem {
 
     public void setItem(org.launchcode.Final_Project.models.Item item) {
         Item = item;
+    }
+
+    public GameChampion getGameChampion() {
+        return gameChampion;
+    }
+
+    public void setGameChampion(GameChampion gameChampion) {
+        this.gameChampion = gameChampion;
     }
 }
