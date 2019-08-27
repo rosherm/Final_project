@@ -27,11 +27,11 @@ public class Item{
 
     @OneToOne
     @JoinColumn(name = "RootItemId1")
-    private Item RootItemId1 = new Item();
+    private Item RootItemId1;
 
     @OneToOne
     @JoinColumn(name = "RootItemId2")
-    private Item RootItemId2 = new Item();
+    private Item RootItemId2;
 
 
     @OneToOne(mappedBy ="item")

@@ -21,7 +21,7 @@ public class Champions {
     private String championPicUrl;
 
     @OneToOne(mappedBy = "champions")
-    private GameChampion Gamechampion;
+    private GameChampion gamechampion;
 
     public Champions(String championName, String championPicUrl) {
         this.championName = championName;

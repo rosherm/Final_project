@@ -10,7 +10,7 @@ public class GameItem {
 
     @OneToOne
     @JoinColumn(name = "item_id")
-    private Item Item = new Item();
+    private Item Item;
 
     @ManyToOne
     private Game game;

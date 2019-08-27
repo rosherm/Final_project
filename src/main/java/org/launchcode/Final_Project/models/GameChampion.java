@@ -14,28 +14,28 @@ public class GameChampion {
 
     @OneToOne
     @JoinColumn(name = "champions_id")
-    private Champions Champion = new Champions();
+    private Champions Champions;
 
     @OneToMany
-    @JoinColumn(name = "game_champion_id")
+    @JoinColumn(name = "gamechampion_id")
     private List<GameChampionItem> GameChampionItem = new ArrayList<>();
 
     @ManyToOne
     private Game game;
 
-    public GameChampion(Champions champion) {
-        Champion = champion;
+    public GameChampion(Champions champions) {
+        Champions = champions;
     }
 
     public GameChampion() {
     }
 
-    public Champions getChampion() {
-        return Champion;
+    public org.launchcode.Final_Project.models.Champions getChampions() {
+        return Champions;
     }
 
-    public void setChampion(Champions champion) {
-        Champion = champion;
+    public void setChampions(org.launchcode.Final_Project.models.Champions champions) {
+        Champions = champions;
     }
 
     public int getId() {
