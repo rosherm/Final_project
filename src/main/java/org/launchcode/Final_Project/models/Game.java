@@ -1,6 +1,8 @@
 package org.launchcode.Final_Project.models;
 
 
+import org.apache.catalina.User;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +24,9 @@ public class Game {
 
     @Id
     private int id;
+
+    @ManyToOne
+    private user user;
 
     public Game(int placement, int LP) {
         this.placement = placement;
@@ -59,5 +64,13 @@ public class Game {
 
     public List<GameItem> getGameItem() {
         return gameItem;
+    }
+
+    public org.launchcode.Final_Project.models.user getUser() {
+        return user;
+    }
+
+    public void setUser(org.launchcode.Final_Project.models.user user) {
+        this.user = user;
     }
 }

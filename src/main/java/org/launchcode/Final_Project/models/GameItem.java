@@ -8,11 +8,12 @@ public class GameItem {
     @Id
     private int id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "item_id")
     private Item Item;
 
     @ManyToOne
+    @JoinColumn(name = "game_id")
     private Game game;
 
     public GameItem(org.launchcode.Final_Project.models.Item item) {

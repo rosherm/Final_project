@@ -2,12 +2,10 @@ package org.launchcode.Final_Project.models;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.sql.Blob;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Item{
@@ -33,12 +31,13 @@ public class Item{
     @JoinColumn(name = "RootItemId2")
     private Item RootItemId2;
 
+    @OneToMany
+    @JoinColumn(name = "item_id")
+    private List<GameChampionItem> GameChampionItem = new ArrayList<>();
 
-    @OneToOne(mappedBy ="item")
-    private GameChampionItem gameChampionItem;
-
-    @OneToOne(mappedBy ="item")
-    private GameItem gameItem;
+    @OneToMany
+    @JoinColumn(name = "item_id")
+    private List<GameItem> gameItem = new ArrayList<>();
 
 
     public Item(ArrayList<String> itemName, ArrayList<String> itemPic, ArrayList<String> itemEffect, Item rootItemId1, Item rootItemId2) {
@@ -96,13 +95,11 @@ public class Item{
         RootItemId2 = rootItemId2;
     }
 
-    public GameChampionItem getGameChampionItem() {
-        return gameChampionItem;
+    public List<org.launchcode.Final_Project.models.GameChampionItem> getGameChampionItem() {
+        return GameChampionItem;
     }
 
-    public GameItem getGameItem() {
+    public List<GameItem> getGameItem() {
         return gameItem;
     }
-
-
 }
