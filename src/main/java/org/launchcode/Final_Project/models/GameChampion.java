@@ -10,6 +10,7 @@ import java.util.List;
 public class GameChampion {
 
     @Id
+    @GeneratedValue
     private int id;
 
     @OneToMany

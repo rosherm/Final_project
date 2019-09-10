@@ -98,6 +98,7 @@ public class indexController {
     @RequestMapping(value = "items", method = RequestMethod.GET)
     public String items(Model model){
         model.addAttribute("title", "Items");
+        model.addAttribute("Item", itemsDao.findAll());
 
         return "items";
     }

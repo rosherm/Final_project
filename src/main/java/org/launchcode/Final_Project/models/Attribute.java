@@ -9,6 +9,7 @@ import java.util.List;
 public class Attribute {
 
     @Id
+    @GeneratedValue
     private int id;
 
     private String Name;

@@ -12,6 +12,7 @@ import java.util.List;
 public class Champions {
 
     @Id
+    @GeneratedValue
     private int id;
 
     @NotEmpty

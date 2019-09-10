@@ -13,10 +13,17 @@
 
     <tr>
         <th>Name</th>
-        <th>Description</th>
+        <th>Picture</th>
+        <th>Effect</th>
         <th></th>
     </tr>
 
+    <tr th:each="item : ${Item}">
+        <td th:text="${item.itemName}"></td>
+        <td><img th:src="${item.itemPic}" /></td>
+        <td th:text="${item.itemEffect}" ></td>
+
+    </tr>
 
 
 </table>

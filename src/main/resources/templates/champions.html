@@ -18,7 +18,7 @@
 
     <tr th:each="champion : ${Champions}">
         <td th:text="${champion.championName}"></td>
-        <td th:text="${champion.championPicUrl}"></td>
+        <td><img th:src="${champion.championPicUrl}" /></td>
     </tr>
 
 

@@ -6,6 +6,7 @@ import javax.persistence.*;
 public class GameItem {
 
     @Id
+    @GeneratedValue
     private int id;
 
     @ManyToOne

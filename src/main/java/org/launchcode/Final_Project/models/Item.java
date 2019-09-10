@@ -12,16 +12,17 @@ public class Item{
 
 
     @Id
+    @GeneratedValue
     private int id;
 
     @NotEmpty
-    private ArrayList<String> itemName;
+    private String itemName;
 
     @NotEmpty
-    private ArrayList<String> itemPic;
+    private String itemPic;
 
     @NotEmpty
-    private ArrayList<String> itemEffect;
+    private String itemEffect;
 
     @OneToOne
     @JoinColumn(name = "RootItemId1")
@@ -40,7 +41,7 @@ public class Item{
     private List<GameItem> gameItem = new ArrayList<>();
 
 
-    public Item(ArrayList<String> itemName, ArrayList<String> itemPic, ArrayList<String> itemEffect, Item rootItemId1, Item rootItemId2) {
+    public Item(String itemName, String itemPic, String itemEffect, Item rootItemId1, Item rootItemId2) {
         this.itemName = itemName;
         this.itemPic = itemPic;
         this.itemEffect = itemEffect;
@@ -55,27 +56,27 @@ public class Item{
         return id;
     }
 
-    public ArrayList<String> getItemName() {
+    public String getItemName() {
         return itemName;
     }
 
-    public void setItemName(ArrayList<String> itemName) {
+    public void setItemName(String itemName) {
         this.itemName = itemName;
     }
 
-    public ArrayList<String> getItemPic() {
+    public String getItemPic() {
         return itemPic;
     }
 
-    public void setItemPic(ArrayList<String> itemPic) {
+    public void setItemPic(String itemPic) {
         this.itemPic = itemPic;
     }
 
-    public ArrayList<String> getItemEffect() {
+    public String getItemEffect() {
         return itemEffect;
     }
 
-    public void setItemEffect(ArrayList<String> itemEffect) {
+    public void setItemEffect(String itemEffect) {
         this.itemEffect = itemEffect;
     }
 

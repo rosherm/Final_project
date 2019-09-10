@@ -23,6 +23,7 @@ public class Game {
     private int LP;
 
     @Id
+    @GeneratedValue
     private int id;
 
     @ManyToOne
