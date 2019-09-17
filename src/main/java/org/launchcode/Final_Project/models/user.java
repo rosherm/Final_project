@@ -83,6 +83,8 @@ public class user {
         Games = games;
     }
 
-
+    public void addGames(Game game){
+        Games.add(game);
+    }
 
 }

@@ -1,12 +1,8 @@
 package org.launchcode.Final_Project.controllers;
 
 import org.apache.catalina.User;
-import org.launchcode.Final_Project.models.Champions;
-import org.launchcode.Final_Project.models.Item;
-import org.launchcode.Final_Project.models.data.championsDao;
-import org.launchcode.Final_Project.models.data.itemsDao;
-import org.launchcode.Final_Project.models.data.userDao;
-import org.launchcode.Final_Project.models.user;
+import org.launchcode.Final_Project.models.*;
+import org.launchcode.Final_Project.models.data.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +25,25 @@ import javax.validation.Valid;
 public class indexController {
 
     @Autowired
+    private attributeDao attributeDao;
+
+    @Autowired
+    private bonusDao bonusDao;
+
+    @Autowired
+    private gamechampionDao gamechampionDao;
+
+    @Autowired
+    private gamechampionitemDao gamechampionitemDao;
+
+    @Autowired
+    private gameitemDao gameitemDao;
+
+    @Autowired
     private userDao userDao;
+
+    @Autowired
+    private gamesDao gamesDao;
 
     @Autowired
     private itemsDao itemsDao;
@@ -142,6 +157,12 @@ public class indexController {
 
         userDao.save(newUser);
 
+        userCookie = new Cookie("username", username);
+        userCookie.setMaxAge(60*60*2);
+        userCookie.setPath("/");
+        response.addCookie(userCookie);
+
+        model.addAttribute("title", "User Stats");
         return "stats";
     }
 
@@ -161,6 +182,55 @@ public class indexController {
 
         return "stats";
     }
+
+
+    @RequestMapping(value = "gameEntry", method = RequestMethod.GET)
+    public String gameEntry(Model model){
+        model.addAttribute("title", "Game Entry");
+        model.addAttribute("Champions", championsDao.findAll());
+        model.addAttribute("Item", itemsDao.findAll());
+        model.addAttribute("Game",new Game());
+        model.addAttribute("GameChampion", new GameChampion());
+        model.addAttribute("GameChampionItem", new GameChampionItem());
+        model.addAttribute("GameItem", new GameItem());
+
+        return "gameEntry";
+
+    }
+
+    @RequestMapping(value = "gameEntry", method = RequestMethod.POST)
+    public String processgameEntry(@ModelAttribute  @Valid Game newGame,
+                                  Errors errors, Model model) {
+
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "Game Entry");
+            return "gameEntry";
+        }
+
+        Cookie[] cookies = request.getCookies();
+
+        for (Cookie cookie: cookies){
+            if(cookie.getName().equals("username")){
+                user cookieuser = userDao.findByUsername(cookie.getValue());
+
+               // int currentUserID = cookieuser.getId();
+
+                //int gamid = newGame.getId();
+
+                newGame.setUser(cookieuser);
+
+                cookieuser.addGames(newGame);
+
+                gamesDao.save(newGame);
+
+                return "stats";
+            }
+        }
+
+
+        return "stats";
+    }
+
 
 //    @RequestMapping(value = "AdminAddChampions-Items", method = RequestMethod.GET)
 //    public String adminAdd(Model model){

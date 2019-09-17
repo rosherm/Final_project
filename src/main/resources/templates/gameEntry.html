@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+
+<h2>Game Form</h2>
+
+<form method="post" style="max-width:600px;" th:object="${Game}">
+<table class="table">
+    <tr>
+        <th>LP</th>
+        <th>Placement</th>
+        <th>Champions</th>
+        <th>Items</th>
+    </tr>
+
+    <tr>
+        <td>
+
+            <div class="form-group">
+                <input class="form-control" th:field="*{LP}" placeholder="Current LP"/>
+                <span th:errors="*{LP}" class="error"></span>
+            </div>
+        </td>
+
+        <td>
+            <div class="form-group">
+                <select th:field ="*{placement}">
+                    <option th:value="1" >1</option>
+                    <option th:value="2" >2</option>
+                    <option th:value="3" >3</option>
+                    <option th:value="4" >4</option>
+                    <option th:value="5" >5</option>
+                    <option th:value="6" >6</option>
+                    <option th:value="7" >7</option>
+                    <option th:value="8" >8</option>
+
+                </select>
+            </div>
+        </td>
+
+<td>
+<div class="form-group">
+    <div>
+    <label th:for="Champions"></label>
+    </div>
+    <div>
+    <select name="Champions">
+        <option value = "">Select Champion</option>
+        <option th:each="champion : ${Champions}"
+                th:text="${champion.championName}"
+                th:value="${champion.id}"></option>
+    </select>
+    </div>
+
+    <div>
+    <select name="Champions2">
+        <option value = "">Select Champion</option>
+        <option th:each="champion : ${Champions}"
+                th:text="${champion.championName}"
+                th:value="${champion.id}"></option>
+    </select>
+
+    </div>
+
+    <div>
+    <select name="Champions3">
+        <option value = "">Select Champion</option>
+        <option th:each="champion : ${Champions}"
+                th:text="${champion.championName}"
+                th:value="${champion.id}"></option>
+    </select>
+    </div>
+
+        <div>
+    <select name="Champions4">
+        <option value = "">Select Champion</option>
+        <option th:each="champion : ${Champions}"
+                th:text="${champion.championName}"
+                th:value="${champion.id}"></option>
+    </select>
+
+        </div>
+
+            <div>
+    <select name="Champions5">
+        <option value = "">Select Champion</option>
+        <option th:each="champion : ${Champions}"
+                th:text="${champion.championName}"
+                th:value="${champion.id}"></option>
+    </select>
+            </div>
+
+                <div>
+    <select name="Champions6">
+        <option value = "">Select Champion</option>
+        <option th:each="champion : ${Champions}"
+                th:text="${champion.championName}"
+                th:value="${champion.id}"></option>
+    </select>
+                    <div/>
+
+                    <div>
+    <select name="Champions7">
+        <option value = "">Select Champion</option>
+        <option th:each="champion : ${Champions}"
+                th:text="${champion.championName}"
+                th:value="${champion.id}"></option>
+    </select>
+                    </div>
+
+                        <div>
+    <select name="Champions8">
+        <option value = "">Select Champion</option>
+        <option th:each="champion : ${Champions}"
+                th:text="${champion.championName}"
+                th:value="${champion.id}"></option>
+    </select>
+                        </div>
+
+                            <div>
+    <select name="Champions9">
+        <option value = "">Select Champion</option>
+        <option th:each="champion : ${Champions}"
+                th:text="${champion.championName}"
+                th:value="${champion.id}"></option>
+    </select>
+                            </div>
+
+                    <div>
+    <select name="Champions10">
+        <option value = "">Select Champion</option>
+        <option th:each="champion : ${Champions}"
+                th:text="${champion.championName}"
+                th:value="${champion.id}"></option>
+    </select>
+                                </div>
+                                    </div>
+</div>
+</td>
+    </tr>
+
+
+</table>
+
+
+<input type = "submit" value = "Submit Game"/>
+</form>
+
+</body>
+</html>
+
+
