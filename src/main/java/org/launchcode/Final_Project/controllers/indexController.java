@@ -90,6 +90,9 @@ public class indexController {
                  userCookie.setPath("/");
                  response.addCookie(userCookie);
 
+                 model.addAttribute("Games",gamesDao.findAll());
+                 model.addAttribute("title", "Stats");
+
                  return "stats";
 
              }
@@ -121,6 +124,7 @@ public class indexController {
     @RequestMapping(value = "stats", method = RequestMethod.GET)
     public String stats(Model model){
         model.addAttribute("title", "User Stats");
+        model.addAttribute("Games",gamesDao.findAll());
 
         return "stats";
     }
@@ -163,6 +167,7 @@ public class indexController {
         response.addCookie(userCookie);
 
         model.addAttribute("title", "User Stats");
+
         return "stats";
     }
 
@@ -199,11 +204,19 @@ public class indexController {
     }
 
     @RequestMapping(value = "gameEntry", method = RequestMethod.POST)
-    public String processgameEntry(@ModelAttribute  @Valid Game newGame,
+    public String processgameEntry(@ModelAttribute  @Valid Game newGame, @RequestParam(value = "Champions", required = false, defaultValue = "") int Champions,
                                   Errors errors, Model model) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Game Entry");
+            model.addAttribute("Champions", championsDao.findAll());
+            model.addAttribute("Item", itemsDao.findAll());
+            model.addAttribute("Game",newGame);
+            model.addAttribute("GameChampion", new GameChampion());
+            model.addAttribute("GameChampionItem", new GameChampionItem());
+            model.addAttribute("GameItem", new GameItem());
+
+
             return "gameEntry";
         }
 
@@ -215,7 +228,7 @@ public class indexController {
 
                // int currentUserID = cookieuser.getId();
 
-                //int gamid = newGame.getId();
+                //int gameID = newGame.getId();
 
                 newGame.setUser(cookieuser);
 
@@ -223,10 +236,29 @@ public class indexController {
 
                 gamesDao.save(newGame);
 
+                //int championID = Champions.getId();
+
+                Champions newChampion = championsDao.findOne(Champions);
+
+                GameChampion newgameChampion = new GameChampion(newChampion, newGame);
+
+                //newChampion.setChampions(Champions);
+
+                //newChampion.setGame(newGame);
+
+
+                gamechampionDao.save(newgameChampion);
+
+                model.addAttribute("Games",gamesDao.findAll());
+
+                model.addAttribute("title", "Stats");
+
                 return "stats";
             }
         }
 
+        model.addAttribute("Games",gamesDao.findAll());
+        model.addAttribute("title", "Stats");
 
         return "stats";
     }

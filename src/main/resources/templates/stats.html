@@ -19,6 +19,12 @@
         <th>Items</th>
     </tr>
 
+    <tr th:each="game : ${Games}">
+        <td th:text="${game.id}"></td>
+        <td th:text="${game.LP}"></td>
+        <td th:text="${game.placement}"></td>
+
+    </tr>
 
 
 </table>

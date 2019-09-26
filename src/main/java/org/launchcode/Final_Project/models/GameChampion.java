@@ -10,23 +10,24 @@ import java.util.List;
 public class GameChampion {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @OneToMany
     @JoinColumn(name = "gamechampion_id")
     private List<GameChampionItem> GameChampionItem = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "game_id")
     private Game game;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "champion_id")
     private Champions champions;
 
-    public GameChampion(Champions champions) {
+    public GameChampion(Champions champions, Game game) {
         this.champions = champions;
+        this.game = game;
     }
 
     public GameChampion() {

@@ -4,6 +4,7 @@ package org.launchcode.Final_Project.models;
 import org.apache.catalina.User;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class Game {
 
     private int placement;
 
+    //@Max(value = 100, message = "Up to 100.")
     private int LP;
 
     @Id

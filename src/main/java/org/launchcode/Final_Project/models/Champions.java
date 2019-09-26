@@ -21,7 +21,7 @@ public class Champions {
     @NotEmpty
     private String championPicUrl;
 
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "champion_id")
     private List<GameChampion> GameChampion = new ArrayList<>();
 
