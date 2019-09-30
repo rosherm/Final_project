@@ -205,6 +205,15 @@ public class indexController {
 
     @RequestMapping(value = "gameEntry", method = RequestMethod.POST)
     public String processgameEntry(@ModelAttribute  @Valid Game newGame, @RequestParam(value = "Champions", required = false, defaultValue = "") int Champions,
+                                   @RequestParam(value = "Champions2", required = false, defaultValue = "") int Champions2,
+                                   @RequestParam(value = "Champions3", required = false, defaultValue = "") int Champions3,
+                                   @RequestParam(value = "Champions4", required = false, defaultValue = "") int Champions4,
+                                   @RequestParam(value = "Champions5", required = false, defaultValue = "") int Champions5,
+                                   @RequestParam(value = "Champions6", required = false, defaultValue = "") int Champions6,
+                                   @RequestParam(value = "Champions7", required = false, defaultValue = "") int Champions7,
+                                   @RequestParam(value = "Champions8", required = false, defaultValue = "") int Champions8,
+                                   @RequestParam(value = "Champions9", required = false, defaultValue = "") int Champions9,
+                                   @RequestParam(value = "Champions10", required = false, defaultValue = "") int Champions10,
                                   Errors errors, Model model) {
 
         if (errors.hasErrors()) {
@@ -226,28 +235,83 @@ public class indexController {
             if(cookie.getName().equals("username")){
                 user cookieuser = userDao.findByUsername(cookie.getValue());
 
-               // int currentUserID = cookieuser.getId();
-
-                //int gameID = newGame.getId();
-
                 newGame.setUser(cookieuser);
 
                 cookieuser.addGames(newGame);
 
                 gamesDao.save(newGame);
 
-                //int championID = Champions.getId();
-
+                //Gets the fist selected champion
                 Champions newChampion = championsDao.findOne(Champions);
 
                 GameChampion newgameChampion = new GameChampion(newChampion, newGame);
 
-                //newChampion.setChampions(Champions);
-
-                //newChampion.setGame(newGame);
-
-
                 gamechampionDao.save(newgameChampion);
+
+                //Gets the Second selected champion
+                Champions newChampion2 = championsDao.findOne(Champions2);
+
+                GameChampion newgameChampion2 = new GameChampion(newChampion2, newGame);
+
+                gamechampionDao.save(newgameChampion2);
+
+                //Gets the Third selected champion
+                Champions newChampion3 = championsDao.findOne(Champions3);
+
+                GameChampion newgameChampion3 = new GameChampion(newChampion3, newGame);
+
+                gamechampionDao.save(newgameChampion3);
+
+                //Gets the Fourth selected champion
+                Champions newChampion4 = championsDao.findOne(Champions4);
+
+                GameChampion newgameChampion4 = new GameChampion(newChampion4, newGame);
+
+                gamechampionDao.save(newgameChampion4);
+
+                //Gets the Fifth selected champion
+                Champions newChampion5 = championsDao.findOne(Champions5);
+
+                GameChampion newgameChampion5 = new GameChampion(newChampion5, newGame);
+
+                gamechampionDao.save(newgameChampion5);
+
+                //Gets the Sixth selected champion
+                Champions newChampion6 = championsDao.findOne(Champions6);
+
+                GameChampion newgameChampion6 = new GameChampion(newChampion6, newGame);
+
+                gamechampionDao.save(newgameChampion6);
+
+                //Gets the Seventh selected champion
+                Champions newChampion7 = championsDao.findOne(Champions7);
+
+                GameChampion newgameChampion7 = new GameChampion(newChampion7, newGame);
+
+                gamechampionDao.save(newgameChampion7);
+
+                //Gets the eight selected champion
+                Champions newChampion8 = championsDao.findOne(Champions8);
+
+                GameChampion newgameChampion8 = new GameChampion(newChampion8, newGame);
+
+                gamechampionDao.save(newgameChampion8);
+
+                //Gets the Ninth selected champion
+                Champions newChampion9 = championsDao.findOne(Champions9);
+
+                GameChampion newgameChampion9 = new GameChampion(newChampion9, newGame);
+
+                gamechampionDao.save(newgameChampion9);
+
+                //Gets the Tenth selected champion
+                Champions newChampion10 = championsDao.findOne(Champions10);
+
+                GameChampion newgameChampion10 = new GameChampion(newChampion10, newGame);
+
+                gamechampionDao.save(newgameChampion10);
+
+
 
                 model.addAttribute("Games",gamesDao.findAll());
 
