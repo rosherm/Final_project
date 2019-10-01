@@ -7,19 +7,20 @@ import javax.persistence.*;
 public class GameChampionItem {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "item_id")
     private Item Item;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "gamechampion_id")
     private GameChampion gameChampion;
 
-    public GameChampionItem(org.launchcode.Final_Project.models.Item item) {
+    public GameChampionItem(org.launchcode.Final_Project.models.Item item, GameChampion gameChampion) {
         Item = item;
+        this.gameChampion = gameChampion;
     }
 
     public GameChampionItem() {

@@ -6,19 +6,20 @@ import javax.persistence.*;
 public class GameItem {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "item_id")
     private Item Item;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "game_id")
     private Game game;
 
-    public GameItem(org.launchcode.Final_Project.models.Item item) {
+    public GameItem(org.launchcode.Final_Project.models.Item item, Game game) {
         Item = item;
+        this.game = game;
     }
 
     public GameItem() {

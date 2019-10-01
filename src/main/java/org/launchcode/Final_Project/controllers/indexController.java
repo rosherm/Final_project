@@ -18,6 +18,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import javax.validation.constraints.Null;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Controller
@@ -90,7 +93,7 @@ public class indexController {
                  userCookie.setPath("/");
                  response.addCookie(userCookie);
 
-                 model.addAttribute("Games",gamesDao.findAll());
+                 model.addAttribute("Games",gamesByUserId());
                  model.addAttribute("title", "Stats");
 
                  return "stats";
@@ -121,10 +124,37 @@ public class indexController {
         return "items";
     }
 
+    public List<Game> gamesByUserId() {
+        Cookie[] cookies = request.getCookies();
+        ArrayList<Game> games = new ArrayList<Game>();
+
+        for (Cookie cookie: cookies) {
+            if (cookie.getName().equals("username")) {
+                user cookieuser = userDao.findByUsername(cookie.getValue());
+                for (Game g : gamesDao.findAll()) {
+                    if (g.getUser() != null) {
+                        int gameUserId = g.getUser().getId();
+                        int cookieUserId = cookieuser.getId();
+                        if (gameUserId == cookieUserId) {
+                            games.add(g);
+                        }
+                    }
+                }
+            }
+        }
+        return games;
+    }
+
+
+
     @RequestMapping(value = "stats", method = RequestMethod.GET)
     public String stats(Model model){
         model.addAttribute("title", "User Stats");
-        model.addAttribute("Games",gamesDao.findAll());
+        model.addAttribute("Games",gamesByUserId());
+
+
+
+
 
         return "stats";
     }
@@ -203,18 +233,109 @@ public class indexController {
 
     }
 
+    public void makegameChampion(int champ, Game currentGame, int Item, int Item2, int Item3){
+        if (champ != 0) {
+            Champions newChampion = championsDao.findOne(champ);
+
+            GameChampion newgameChampion = new GameChampion(newChampion, currentGame);
+
+            gamechampionDao.save(newgameChampion);
+
+            if (Item != 0){
+
+                Item newItem = itemsDao.findOne(Item);
+
+                GameChampionItem newgameChampionItem = new GameChampionItem(newItem, newgameChampion);
+
+                gamechampionitemDao.save(newgameChampionItem);
+            }
+            if (Item2 != 0){
+
+                Item newItem = itemsDao.findOne(Item2);
+
+                GameChampionItem newgameChampionItem = new GameChampionItem(newItem, newgameChampion);
+
+                gamechampionitemDao.save(newgameChampionItem);
+            }
+            if (Item3 != 0){
+
+                Item newItem = itemsDao.findOne(Item3);
+
+                GameChampionItem newgameChampionItem = new GameChampionItem(newItem, newgameChampion);
+
+                gamechampionitemDao.save(newgameChampionItem);
+            }
+
+        }
+    }
+
+    public void makegameItem(Game currentGame, int Item){
+        if (Item != 0) {
+            Item newItem = itemsDao.findOne(Item);
+
+            GameItem newgameItem = new GameItem(newItem, currentGame);
+
+            gameitemDao.save(newgameItem);
+        }
+    }
+
+
+
+
     @RequestMapping(value = "gameEntry", method = RequestMethod.POST)
-    public String processgameEntry(@ModelAttribute  @Valid Game newGame, @RequestParam(value = "Champions", required = false, defaultValue = "") int Champions,
-                                   @RequestParam(value = "Champions2", required = false, defaultValue = "") int Champions2,
-                                   @RequestParam(value = "Champions3", required = false, defaultValue = "") int Champions3,
-                                   @RequestParam(value = "Champions4", required = false, defaultValue = "") int Champions4,
-                                   @RequestParam(value = "Champions5", required = false, defaultValue = "") int Champions5,
-                                   @RequestParam(value = "Champions6", required = false, defaultValue = "") int Champions6,
-                                   @RequestParam(value = "Champions7", required = false, defaultValue = "") int Champions7,
-                                   @RequestParam(value = "Champions8", required = false, defaultValue = "") int Champions8,
-                                   @RequestParam(value = "Champions9", required = false, defaultValue = "") int Champions9,
-                                   @RequestParam(value = "Champions10", required = false, defaultValue = "") int Champions10,
+    public String processgameEntry(@ModelAttribute  @Valid Game newGame, @RequestParam(value = "Champions", required = false) int Champions,
+                                   @RequestParam(value = "Champions2", required = false) int Champions2,
+                                   @RequestParam(value = "Champions3", required = false) int Champions3,
+                                   @RequestParam(value = "Champions4", required = false) int Champions4,
+                                   @RequestParam(value = "Champions5", required = false) int Champions5,
+                                   @RequestParam(value = "Champions6", required = false) int Champions6,
+                                   @RequestParam(value = "Champions7", required = false) int Champions7,
+                                   @RequestParam(value = "Champions8", required = false) int Champions8,
+                                   @RequestParam(value = "Champions9", required = false) int Champions9,
+                                   @RequestParam(value = "Champions10", required = false) int Champions10,
+                                   @RequestParam(value = "Items", required = false) int Items,
+                                   @RequestParam(value = "Items2", required = false) int Items2,
+                                   @RequestParam(value = "Items3", required = false) int Items3,
+                                   @RequestParam(value = "Items4", required = false) int Items4,
+                                   @RequestParam(value = "Items5", required = false) int Items5,
+                                   @RequestParam(value = "Items6", required = false) int Items6,
+                                   @RequestParam(value = "Items7", required = false) int Items7,
+                                   @RequestParam(value = "Items8", required = false) int Items8,
+                                   @RequestParam(value = "Items9", required = false) int Items9,
+                                   @RequestParam(value = "Items10", required = false) int Items10,
+                                   @RequestParam(value = "Items11", required = false) int Items11,
+                                   @RequestParam(value = "Items12", required = false) int Items12,
+                                   @RequestParam(value = "Items13", required = false) int Items13,
+                                   @RequestParam(value = "Items14", required = false) int Items14,
+                                   @RequestParam(value = "Items15", required = false) int Items15,
+                                   @RequestParam(value = "Items16", required = false) int Items16,
+                                   @RequestParam(value = "Items17", required = false) int Items17,
+                                   @RequestParam(value = "Items18", required = false) int Items18,
+                                   @RequestParam(value = "Items19", required = false) int Items19,
+                                   @RequestParam(value = "Items20", required = false) int Items20,
+                                   @RequestParam(value = "Items21", required = false) int Items21,
+                                   @RequestParam(value = "Items22", required = false) int Items22,
+                                   @RequestParam(value = "Items23", required = false) int Items23,
+                                   @RequestParam(value = "Items24", required = false) int Items24,
+                                   @RequestParam(value = "Items25", required = false) int Items25,
+                                   @RequestParam(value = "Items26", required = false) int Items26,
+                                   @RequestParam(value = "Items27", required = false) int Items27,
+                                   @RequestParam(value = "Items28", required = false) int Items28,
+                                   @RequestParam(value = "Items29", required = false) int Items29,
+                                   @RequestParam(value = "Items30", required = false) int Items30,
+                                   @RequestParam(value = "Items31", required = false) int Items31,
+                                   @RequestParam(value = "Items32", required = false) int Items32,
+                                   @RequestParam(value = "Items33", required = false) int Items33,
+                                   @RequestParam(value = "Items34", required = false) int Items34,
+                                   @RequestParam(value = "Items35", required = false) int Items35,
+                                   @RequestParam(value = "Items36", required = false) int Items36,
+                                   @RequestParam(value = "Items37", required = false) int Items37,
+                                   @RequestParam(value = "Items38", required = false) int Items38,
+                                   @RequestParam(value = "Items39", required = false) int Items39,
+                                   @RequestParam(value = "Items40", required = false) int Items40,
                                   Errors errors, Model model) {
+
+
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Game Entry");
@@ -229,6 +350,7 @@ public class indexController {
             return "gameEntry";
         }
 
+
         Cookie[] cookies = request.getCookies();
 
         for (Cookie cookie: cookies){
@@ -241,87 +363,55 @@ public class indexController {
 
                 gamesDao.save(newGame);
 
-                //Gets the fist selected champion
-                Champions newChampion = championsDao.findOne(Champions);
+                makegameChampion(Champions,newGame,Items,Items11,Items21);
 
-                GameChampion newgameChampion = new GameChampion(newChampion, newGame);
+                makegameChampion(Champions2,newGame,Items2,Items12,Items22);
 
-                gamechampionDao.save(newgameChampion);
+                makegameChampion(Champions3,newGame,Items3,Items13,Items23);
 
-                //Gets the Second selected champion
-                Champions newChampion2 = championsDao.findOne(Champions2);
+                makegameChampion(Champions4,newGame,Items4,Items14,Items24);
 
-                GameChampion newgameChampion2 = new GameChampion(newChampion2, newGame);
+                makegameChampion(Champions5,newGame,Items5,Items15,Items25);
 
-                gamechampionDao.save(newgameChampion2);
+                makegameChampion(Champions6,newGame,Items6,Items16,Items26);
 
-                //Gets the Third selected champion
-                Champions newChampion3 = championsDao.findOne(Champions3);
+                makegameChampion(Champions7,newGame,Items7,Items17,Items27);
 
-                GameChampion newgameChampion3 = new GameChampion(newChampion3, newGame);
+                makegameChampion(Champions8,newGame,Items8,Items18,Items28);
 
-                gamechampionDao.save(newgameChampion3);
+                makegameChampion(Champions9,newGame,Items9,Items19,Items29);
 
-                //Gets the Fourth selected champion
-                Champions newChampion4 = championsDao.findOne(Champions4);
+                makegameChampion(Champions10,newGame,Items10,Items20,Items30);
 
-                GameChampion newgameChampion4 = new GameChampion(newChampion4, newGame);
+                makegameItem(newGame, Items31);
 
-                gamechampionDao.save(newgameChampion4);
+                makegameItem(newGame, Items32);
 
-                //Gets the Fifth selected champion
-                Champions newChampion5 = championsDao.findOne(Champions5);
+                makegameItem(newGame, Items33);
 
-                GameChampion newgameChampion5 = new GameChampion(newChampion5, newGame);
+                makegameItem(newGame, Items34);
 
-                gamechampionDao.save(newgameChampion5);
+                makegameItem(newGame, Items35);
 
-                //Gets the Sixth selected champion
-                Champions newChampion6 = championsDao.findOne(Champions6);
+                makegameItem(newGame, Items36);
 
-                GameChampion newgameChampion6 = new GameChampion(newChampion6, newGame);
+                makegameItem(newGame, Items37);
 
-                gamechampionDao.save(newgameChampion6);
+                makegameItem(newGame, Items38);
 
-                //Gets the Seventh selected champion
-                Champions newChampion7 = championsDao.findOne(Champions7);
+                makegameItem(newGame, Items39);
 
-                GameChampion newgameChampion7 = new GameChampion(newChampion7, newGame);
-
-                gamechampionDao.save(newgameChampion7);
-
-                //Gets the eight selected champion
-                Champions newChampion8 = championsDao.findOne(Champions8);
-
-                GameChampion newgameChampion8 = new GameChampion(newChampion8, newGame);
-
-                gamechampionDao.save(newgameChampion8);
-
-                //Gets the Ninth selected champion
-                Champions newChampion9 = championsDao.findOne(Champions9);
-
-                GameChampion newgameChampion9 = new GameChampion(newChampion9, newGame);
-
-                gamechampionDao.save(newgameChampion9);
-
-                //Gets the Tenth selected champion
-                Champions newChampion10 = championsDao.findOne(Champions10);
-
-                GameChampion newgameChampion10 = new GameChampion(newChampion10, newGame);
-
-                gamechampionDao.save(newgameChampion10);
+                makegameItem(newGame, Items40);
 
 
-
-                model.addAttribute("Games",gamesDao.findAll());
-
+                model.addAttribute("Games", gamesByUserId());
                 model.addAttribute("title", "Stats");
 
-                return "stats";
+                return "redirect:stats";
             }
         }
 
-        model.addAttribute("Games",gamesDao.findAll());
+        model.addAttribute("Games",gamesByUserId());
         model.addAttribute("title", "Stats");
 
         return "stats";

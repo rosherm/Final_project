@@ -17,7 +17,9 @@
         <th>LP</th>
         <th>Placement</th>
         <th>Champions</th>
-        <th>Items</th>
+        <th>Champion Item One</th>
+        <th>Champion Item Two</th>
+        <th>Champion Item Three</th>
     </tr>
 
     <tr>
@@ -50,7 +52,7 @@
 
     <div>
     <select name="Champions">
-        <option value = "">Select Champion</option>
+        <option value = "0">Select Champion</option>
         <option th:each="champion : ${Champions}"
                 th:text="${champion.championName}"
                 th:value="${champion.id}"></option>
@@ -59,7 +61,7 @@
 
     <div>
     <select name="Champions2">
-        <option value = "">Select Champion</option>
+        <option value = "0">Select Champion</option>
         <option th:each="champion : ${Champions}"
                 th:text="${champion.championName}"
                 th:value="${champion.id}"></option>
@@ -69,7 +71,7 @@
 
     <div>
     <select name="Champions3">
-        <option value = "">Select Champion</option>
+        <option value = "0">Select Champion</option>
         <option th:each="champion : ${Champions}"
                 th:text="${champion.championName}"
                 th:value="${champion.id}"></option>
@@ -78,7 +80,7 @@
 
         <div>
     <select name="Champions4">
-        <option value = "">Select Champion</option>
+        <option value = "0">Select Champion</option>
         <option th:each="champion : ${Champions}"
                 th:text="${champion.championName}"
                 th:value="${champion.id}"></option>
@@ -88,7 +90,7 @@
 
             <div>
     <select name="Champions5">
-        <option value = "">Select Champion</option>
+        <option value = "0">Select Champion</option>
         <option th:each="champion : ${Champions}"
                 th:text="${champion.championName}"
                 th:value="${champion.id}"></option>
@@ -97,7 +99,7 @@
 
                 <div>
     <select name="Champions6">
-        <option value = "">Select Champion</option>
+        <option value = "0">Select Champion</option>
         <option th:each="champion : ${Champions}"
                 th:text="${champion.championName}"
                 th:value="${champion.id}"></option>
@@ -106,7 +108,7 @@
 
                     <div>
     <select name="Champions7">
-        <option value = "">Select Champion</option>
+        <option value = "0">Select Champion</option>
         <option th:each="champion : ${Champions}"
                 th:text="${champion.championName}"
                 th:value="${champion.id}"></option>
@@ -115,7 +117,7 @@
 
                         <div>
     <select name="Champions8">
-        <option value = "">Select Champion</option>
+        <option value = "0">Select Champion</option>
         <option th:each="champion : ${Champions}"
                 th:text="${champion.championName}"
                 th:value="${champion.id}"></option>
@@ -124,7 +126,7 @@
 
                             <div>
     <select name="Champions9">
-        <option value = "">Select Champion</option>
+        <option value = "0">Select Champion</option>
         <option th:each="champion : ${Champions}"
                 th:text="${champion.championName}"
                 th:value="${champion.id}"></option>
@@ -133,7 +135,7 @@
 
                     <div>
     <select name="Champions10">
-        <option value = "">Select Champion</option>
+        <option value = "0">Select Champion</option>
         <option th:each="champion : ${Champions}"
                 th:text="${champion.championName}"
                 th:value="${champion.id}"></option>
@@ -142,8 +144,401 @@
                                     </div>
 </div>
 </td>
-    </tr>
+        <td>
+            <div class="form-group">
 
+                <div>
+                    <select name="Items">
+                        <option value = "0">Select Item</option>
+                        <option th:each="baseItem : ${Item}"
+                                th:text="${baseItem.itemName}"
+                                th:value="${baseItem.id}"></option>
+                    </select>
+                </div>
+
+                <div>
+                    <select name="Items2">
+                        <option value = "0">Select Item</option>
+                        <option th:each="baseItem : ${Item}"
+                                th:text="${baseItem.itemName}"
+                                th:value="${baseItem.id}"></option>
+                    </select>
+
+                </div>
+
+                <div>
+                    <select name="Items3">
+                        <option value = "0">Select Item</option>
+                        <option th:each="baseItem : ${Item}"
+                                th:text="${baseItem.itemName}"
+                                th:value="${baseItem.id}"></option>
+                    </select>
+                </div>
+
+                <div>
+                    <select name="Items4">
+                        <option value = "0">Select Item</option>
+                        <option th:each="baseItem : ${Item}"
+                                th:text="${baseItem.itemName}"
+                                th:value="${baseItem.id}"></option>
+                    </select>
+
+                </div>
+
+                <div>
+                    <select name="Items5">
+                        <option value = "0">Select Item</option>
+                        <option th:each="baseItem : ${Item}"
+                                th:text="${baseItem.itemName}"
+                                th:value="${baseItem.id}"></option>
+                    </select>
+                </div>
+
+                <div>
+                    <select name="Items6">
+                        <option value = "0">Select Item</option>
+                        <option th:each="baseItem : ${Item}"
+                                th:text="${baseItem.itemName}"
+                                th:value="${baseItem.id}"></option>
+                    </select>
+                    <div/>
+
+                    <div>
+                        <select name="Items7">
+                            <option value = "0">Select Item</option>
+                            <option th:each="baseItem : ${Item}"
+                                    th:text="${baseItem.itemName}"
+                                    th:value="${baseItem.id}"></option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <select name="Items8">
+                            <option value = "0">Select Item</option>
+                            <option th:each="baseItem : ${Item}"
+                                    th:text="${baseItem.itemName}"
+                                    th:value="${baseItem.id}"></option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <select name="Items9">
+                            <option value = "0">Select Item</option>
+                            <option th:each="baseItem : ${Item}"
+                                    th:text="${baseItem.itemName}"
+                                    th:value="${baseItem.id}"></option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <select name="Items10">
+                            <option value = "0">Select Item</option>
+                            <option th:each="baseItem : ${Item}"
+                                    th:text="${baseItem.itemName}"
+                                    th:value="${baseItem.id}"></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div>
+                    <select name="Items11">
+                        <option value = "0">Select Item</option>
+                        <option th:each="baseItem : ${Item}"
+                                th:text="${baseItem.itemName}"
+                                th:value="${baseItem.id}"></option>
+                    </select>
+                </div>
+
+                <div>
+                    <select name="Items12">
+                        <option value = "0">Select Item</option>
+                        <option th:each="baseItem : ${Item}"
+                                th:text="${baseItem.itemName}"
+                                th:value="${baseItem.id}"></option>
+                    </select>
+
+                </div>
+
+                <div>
+                    <select name="Items13">
+                        <option value = "0">Select Item</option>
+                        <option th:each="baseItem : ${Item}"
+                                th:text="${baseItem.itemName}"
+                                th:value="${baseItem.id}"></option>
+                    </select>
+                </div>
+
+                <div>
+                    <select name="Items14">
+                        <option value = "0">Select Item</option>
+                        <option th:each="baseItem : ${Item}"
+                                th:text="${baseItem.itemName}"
+                                th:value="${baseItem.id}"></option>
+                    </select>
+
+                </div>
+
+                <div>
+                    <select name="Items15">
+                        <option value = "0">Select Item</option>
+                        <option th:each="baseItem : ${Item}"
+                                th:text="${baseItem.itemName}"
+                                th:value="${baseItem.id}"></option>
+                    </select>
+                </div>
+
+                <div>
+                    <select name="Items16">
+                        <option value = "0">Select Item</option>
+                        <option th:each="baseItem : ${Item}"
+                                th:text="${baseItem.itemName}"
+                                th:value="${baseItem.id}"></option>
+                    </select>
+                    <div/>
+
+                    <div>
+                        <select name="Items17">
+                            <option value = "0">Select Item</option>
+                            <option th:each="baseItem : ${Item}"
+                                    th:text="${baseItem.itemName}"
+                                    th:value="${baseItem.id}"></option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <select name="Items18">
+                            <option value = "0">Select Item</option>
+                            <option th:each="baseItem : ${Item}"
+                                    th:text="${baseItem.itemName}"
+                                    th:value="${baseItem.id}"></option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <select name="Items19">
+                            <option value = "0">Select Item</option>
+                            <option th:each="baseItem : ${Item}"
+                                    th:text="${baseItem.itemName}"
+                                    th:value="${baseItem.id}"></option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <select name="Items20">
+                            <option value = "0">Select Item</option>
+                            <option th:each="baseItem : ${Item}"
+                                    th:text="${baseItem.itemName}"
+                                    th:value="${baseItem.id}"></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </td>
+
+        <td>
+            <div class="form-group">
+
+                <div>
+                    <select name="Items21">
+                        <option value = "0">Select Item</option>
+                        <option th:each="baseItem : ${Item}"
+                                th:text="${baseItem.itemName}"
+                                th:value="${baseItem.id}"></option>
+                    </select>
+                </div>
+
+                <div>
+                    <select name="Items22">
+                        <option value = "0">Select Item</option>
+                        <option th:each="baseItem : ${Item}"
+                                th:text="${baseItem.itemName}"
+                                th:value="${baseItem.id}"></option>
+                    </select>
+
+                </div>
+
+                <div>
+                    <select name="Items23">
+                        <option value = "0">Select Item</option>
+                        <option th:each="baseItem : ${Item}"
+                                th:text="${baseItem.itemName}"
+                                th:value="${baseItem.id}"></option>
+                    </select>
+                </div>
+
+                <div>
+                    <select name="Items24">
+                        <option value = "0">Select Item</option>
+                        <option th:each="baseItem : ${Item}"
+                                th:text="${baseItem.itemName}"
+                                th:value="${baseItem.id}"></option>
+                    </select>
+
+                </div>
+
+                <div>
+                    <select name="Items25">
+                        <option value = "0">Select Item</option>
+                        <option th:each="baseItem : ${Item}"
+                                th:text="${baseItem.itemName}"
+                                th:value="${baseItem.id}"></option>
+                    </select>
+                </div>
+
+                <div>
+                    <select name="Items26">
+                        <option value = "0">Select Item</option>
+                        <option th:each="baseItem : ${Item}"
+                                th:text="${baseItem.itemName}"
+                                th:value="${baseItem.id}"></option>
+                    </select>
+                    <div/>
+
+                    <div>
+                        <select name="Items27">
+                            <option value = "0">Select Item</option>
+                            <option th:each="baseItem : ${Item}"
+                                    th:text="${baseItem.itemName}"
+                                    th:value="${baseItem.id}"></option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <select name="Items28">
+                            <option value = "0">Select Item</option>
+                            <option th:each="baseItem : ${Item}"
+                                    th:text="${baseItem.itemName}"
+                                    th:value="${baseItem.id}"></option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <select name="Items29">
+                            <option value = "0">Select Item</option>
+                            <option th:each="baseItem : ${Item}"
+                                    th:text="${baseItem.itemName}"
+                                    th:value="${baseItem.id}"></option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <select name="Items30">
+                            <option value = "0">Select Item</option>
+                            <option th:each="baseItem : ${Item}"
+                                    th:text="${baseItem.itemName}"
+                                    th:value="${baseItem.id}"></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <th>Items On Sideline</th>
+    </tr>
+    <tr>
+        <td>
+            <div class="form-group">
+
+                <div>
+                    <select name="Items31">
+                        <option value = "0">Select Item</option>
+                        <option th:each="baseItem : ${Item}"
+                                th:text="${baseItem.itemName}"
+                                th:value="${baseItem.id}"></option>
+                    </select>
+                </div>
+
+                <div>
+                    <select name="Items32">
+                        <option value = "0">Select Item</option>
+                        <option th:each="baseItem : ${Item}"
+                                th:text="${baseItem.itemName}"
+                                th:value="${baseItem.id}"></option>
+                    </select>
+
+                </div>
+
+                <div>
+                    <select name="Items33">
+                        <option value = "0">Select Item</option>
+                        <option th:each="baseItem : ${Item}"
+                                th:text="${baseItem.itemName}"
+                                th:value="${baseItem.id}"></option>
+                    </select>
+                </div>
+
+                <div>
+                    <select name="Items34">
+                        <option value = "0">Select Item</option>
+                        <option th:each="baseItem : ${Item}"
+                                th:text="${baseItem.itemName}"
+                                th:value="${baseItem.id}"></option>
+                    </select>
+
+                </div>
+
+                <div>
+                    <select name="Items35">
+                        <option value = "0">Select Item</option>
+                        <option th:each="baseItem : ${Item}"
+                                th:text="${baseItem.itemName}"
+                                th:value="${baseItem.id}"></option>
+                    </select>
+                </div>
+
+                <div>
+                    <select name="Items36">
+                        <option value = "0">Select Item</option>
+                        <option th:each="baseItem : ${Item}"
+                                th:text="${baseItem.itemName}"
+                                th:value="${baseItem.id}"></option>
+                    </select>
+                    <div/>
+
+                    <div>
+                        <select name="Items37">
+                            <option value = "0">Select Item</option>
+                            <option th:each="baseItem : ${Item}"
+                                    th:text="${baseItem.itemName}"
+                                    th:value="${baseItem.id}"></option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <select name="Items38">
+                            <option value = "0">Select Item</option>
+                            <option th:each="baseItem : ${Item}"
+                                    th:text="${baseItem.itemName}"
+                                    th:value="${baseItem.id}"></option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <select name="Items39">
+                            <option value = "0">Select Item</option>
+                            <option th:each="baseItem : ${Item}"
+                                    th:text="${baseItem.itemName}"
+                                    th:value="${baseItem.id}"></option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <select name="Items40">
+                            <option value = "0">Select Item</option>
+                            <option th:each="baseItem : ${Item}"
+                                    th:text="${baseItem.itemName}"
+                                    th:value="${baseItem.id}"></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
 
 </table>
 
