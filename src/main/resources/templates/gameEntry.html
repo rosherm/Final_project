@@ -11,7 +11,7 @@
 
 <h2>Game Form</h2>
 
-<form method="post" style="max-width:600px;" th:object="${Game}">
+<form method="post" style="max-width:600px;" th:object="${theGame}">
 <table class="table">
     <tr>
         <th>LP</th>
@@ -27,7 +27,6 @@
 
             <div class="form-group">
                 <input class="form-control" th:field="*{LP}" placeholder="Current LP"/>
-                <span class="error" th:errors="*{LP}" ></span>
             </div>
         </td>
 

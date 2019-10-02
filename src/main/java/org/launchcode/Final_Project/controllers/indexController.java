@@ -93,7 +93,7 @@ public class indexController {
                  userCookie.setPath("/");
                  response.addCookie(userCookie);
 
-                 model.addAttribute("Games",gamesByUserId());
+                 model.addAttribute("Games", userInDb.getGames());
                  model.addAttribute("title", "Stats");
 
                  return "stats";
@@ -105,6 +105,16 @@ public class indexController {
         model.addAttribute(userCurrent);
 
         return "index";
+    }
+
+    @RequestMapping(value = "logout")
+    public String logoutProcess(){
+        userCookie = new Cookie("username", "");
+        userCookie.setMaxAge(0);
+        userCookie.setPath("/");
+        response.addCookie(userCookie);
+
+        return "redirect:";
     }
 
 
@@ -224,7 +234,7 @@ public class indexController {
         model.addAttribute("title", "Game Entry");
         model.addAttribute("Champions", championsDao.findAll());
         model.addAttribute("Item", itemsDao.findAll());
-        model.addAttribute("Game",new Game());
+        model.addAttribute("theGame",new Game());
         model.addAttribute("GameChampion", new GameChampion());
         model.addAttribute("GameChampionItem", new GameChampionItem());
         model.addAttribute("GameItem", new GameItem());
@@ -341,7 +351,7 @@ public class indexController {
             model.addAttribute("title", "Game Entry");
             model.addAttribute("Champions", championsDao.findAll());
             model.addAttribute("Item", itemsDao.findAll());
-            model.addAttribute("Game",newGame);
+            model.addAttribute("theGame",newGame);
             model.addAttribute("GameChampion", new GameChampion());
             model.addAttribute("GameChampionItem", new GameChampionItem());
             model.addAttribute("GameItem", new GameItem());

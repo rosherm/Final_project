@@ -25,6 +25,8 @@
         <td th:text="${game.placement}"></td>
         <td><img width="40" th:each="GameChampion : ${game.gameChampion}" th:src="${GameChampion.champions.championPicUrl}"/></td>
 <!--        <td> <ul> <li th:each= "GameChampion : ${game.gameChampion}" th:text="GameChampion.champions.championPicUrl" > </li></ul></td>-->
+       <!-- <td><img width="40" th:each="gcItem : ${game.gameChampion.GameChampionItem}" th:src="${gcItem.Item.itemPic}"/></td>-->
+
 
     </tr>
 
